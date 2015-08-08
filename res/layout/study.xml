@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+	
+   	<!-- Header ''Commented Out Back Button''
+    <TextView
+        android:id="@+id/Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:text="Back"
+        android:textSize="25dp"
+        android:textColor="@color/foreground"/>
+    <TextView
+        android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="@color/foreground"
+		android:layout_below="@id/Back"
+		android:layout_marginTop="0dp"
+		android:id="@+id/HorizontalBar"/>
+   End Header -->
+   
+   <!-- Header with Main Title -->
+   
+  <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Study"
+        android:textSize="25dp"
+        android:textColor="@color/foreground"/>
+    <TextView
+        android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="@color/foreground"
+		android:layout_below="@id/Title"
+		android:layout_marginTop="0dp"
+		android:id="@+id/HorizontalBar"/>
+    
+   <!-- End Header -->
+
+    <EditText
+        android:id="@+id/Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/HorizontalBar"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:singleLine="true"
+        android:ems="10" 
+        android:textColor="@color/foreground"/>
+
+    <ListView
+        android:id="@+id/Dictionary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Search"
+        android:layout_alignRight="@+id/Search"
+        android:layout_below="@+id/Search"
+        android:divider="@color/foreground"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
+
+</RelativeLayout>

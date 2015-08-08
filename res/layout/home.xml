@@ -1,0 +1,143 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@color/background"
+    android:orientation="vertical" >
+	<RelativeLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	tools:context="${relativePackage}.${activityClass}" 
+    	android:layout_weight="1">
+		    	
+    	<!-- Header -->
+	    <TextView
+	        android:id="@+id/Title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:text="L2T"
+	        android:textSize="25dp"
+	        android:textColor="@color/foreground"/>
+	    <TextView
+	        android:layout_width="fill_parent"
+			android:layout_height="2dp"
+			android:background="@color/foreground"
+			android:layout_below="@id/Title"
+			android:layout_marginTop="0dp"
+			android:id="@+id/HorizontalBar" />
+
+	     <ImageButton
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent"
+	         android:layout_above="@+id/UsernameField"
+	         android:background="@null"
+	         android:src="@drawable/settings" 
+	         android:layout_alignBottom="@id/HorizontalBar"
+	         android:layout_marginBottom="15dp"
+	         android:layout_marginTop="15dp"
+	         android:layout_marginRight="7dp"
+	         android:scaleType="fitEnd"
+	         android:onClick="goSettings"/>
+
+	    <!-- End Header -->
+	
+	  	<TextView
+	  	    android:id="@+id/UsernameField"
+	  	    android:layout_width="match_parent"
+	  	    android:layout_height="wrap_content"
+	  	    android:layout_below="@id/HorizontalBar"
+	  	    android:layout_centerHorizontal="true"
+	  	    android:text="John Smith"
+	  	    android:textColor="@color/foreground"
+	  	    android:textSize="30dp"
+	  	    android:gravity="center"
+	  	    android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:textStyle="bold"
+	        android:onClick='goUser' />
+		<ImageView
+	  	    android:id="@+id/Avatar"
+	  	    android:layout_width="match_parent"
+	  	    android:layout_height="match_parent"
+	  	    android:layout_below="@+id/UsernameField"
+	  	    android:layout_centerHorizontal="true"
+	  	    android:adjustViewBounds="true"
+	  	    android:scaleType="fitCenter"
+	  	    android:src="@drawable/temp_monster"
+	  	    android:onClick='goUser'
+	  	 />
+	</RelativeLayout>
+	<LinearLayout
+  	    android:layout_width="match_parent"
+  	    android:layout_height="match_parent"
+  	    android:layout_alignParentBottom="true"
+  	    android:layout_below="@id/Avatar"
+  	    android:layout_marginBottom = "10dp"
+  	    android:layout_marginTop = "10dp"
+  	    android:layout_centerHorizontal="true"
+		android:layout_weight="1"
+		android:orientation="vertical">
+			<LinearLayout
+		  	    android:layout_width="match_parent"
+		  	    android:layout_height="match_parent"
+		  	    android:layout_alignParentBottom="true"
+		  	    android:layout_centerHorizontal="true"
+				android:layout_weight="1"
+				android:orientation="horizontal">
+	  	        	<ImageButton
+	  	        	    android:layout_width="match_parent"
+	  	        	    android:layout_height="match_parent"
+	  	        	    android:layout_margin="10dp"
+	  	        	    android:background="#523C88"
+	  	        	    android:scaleType="fitCenter"
+	  	        	    android:src="@drawable/study"
+	  	        	    android:layout_weight="1"
+	  	        	    android:id="@+id/studyButton"
+	  	        	    android:onClick="goStudy"/>
+	
+	  	        	<ImageButton
+	  	        	    android:layout_width="match_parent"
+	  	        	    android:layout_height="match_parent"
+	  	        	    android:layout_margin="10dp"
+	  	        	    android:background="#523C88"
+	  	        	    android:scaleType="fitCenter"
+	  	        	    android:src="@drawable/train"
+	  	        	    android:layout_weight="1"
+	  	        	    android:id="@+id/trainButton"
+	  	        	    android:onClick="goTrain"/>
+			</LinearLayout>
+  	        <LinearLayout
+		  	    android:layout_width="match_parent"
+		  	    android:layout_height="match_parent"
+		  	    android:layout_alignParentBottom="true"
+		  	    android:layout_centerHorizontal="true"
+				android:layout_weight="1"
+				android:orientation="horizontal">
+					<ImageButton
+	  	        	    android:layout_width="match_parent"
+	  	        	    android:layout_height="match_parent"
+	  	        	    android:layout_margin="10dp"
+	  	        	    android:background="#523C88"
+	  	        	    android:scaleType="fitCenter"
+	  	        	    android:src="@drawable/challenge"
+	  	        	    android:layout_weight="1"
+	  	        	    android:id="@+id/challengeButton"
+	  	        	    android:onClick="goChallenge"/>
+	  	        	<ImageButton
+	  	        	    android:layout_width="match_parent"
+	  	        	    android:layout_height="match_parent"
+	  	        	    android:layout_margin="10dp"
+	  	        	    android:background="#523C88"
+	  	        	    android:scaleType="fitCenter"
+	  	        	    android:src="@drawable/friends"
+	  	        	    android:layout_weight="1"
+	  	        	    android:id="@+id/friendsButton"
+	  	        	    android:onClick="goFriends"/>
+  	    </LinearLayout>
+  	</LinearLayout>
+</LinearLayout>
