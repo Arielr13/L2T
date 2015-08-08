@@ -1,2 +1,2 @@
-# com.ROKO.L2T
-L2T Android Github Repository
+# L2T Android Github Repository
+
