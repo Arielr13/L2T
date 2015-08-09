@@ -126,11 +126,7 @@ public class Study extends Activity {
 		//Define list of definitions to be used by the adapter
 		public List<Definition> getDataForListView(String search){
 			
-		    	List<Definition> definitionsList = new ArrayList<Definition>();
-		    	
-		    	
-		    	Definition definition = new Definition();
-		    	
+		    	List<Definition> definitionsList = new ArrayList<Definition>();	    	
 		    	definitionsList.add(set(
 		    			"TTYL",
 		    			"Talk To You Later"

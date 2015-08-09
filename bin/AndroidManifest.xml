@@ -33,6 +33,17 @@
             android:label="@string/title_activity_study"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".LevelSelect"
+            android:label="@string/title_activity_level_select" 
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Race"
+            android:label="@string/title_activity_race"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

@@ -63,7 +63,8 @@
         android:drawableLeft="@android:drawable/ic_menu_search"
         android:singleLine="true"
         android:ems="10" 
-        android:textColor="@color/foreground"/>
+        android:textColor="@color/foreground"
+        android:textCursorDrawable="@null"/>
 
     <ListView
         android:id="@+id/Dictionary"

@@ -21,8 +21,8 @@ public class Home extends Activity {
 		startActivity(study);
 	}
 	public void goTrain(View v) {
-		Toast toast = Toast.makeText(getApplicationContext(), "Train", Toast.LENGTH_SHORT);
-		toast.show();
+		Intent train = new Intent(this, LevelSelect.class);
+		startActivity(train);
 	}
 	public void goChallenge(View v) {
 		Toast toast = Toast.makeText(getApplicationContext(), "Challenge", Toast.LENGTH_SHORT);

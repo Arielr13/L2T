@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@color/background" >
+
+	<!-- Header -->
+
+    <TextView
+        android:id="@+id/WPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="0 WPM"
+        android:textColor="@color/foreground"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/HorizontalBar"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/WPM"
+        android:layout_marginTop="0dp"
+        android:background="@color/foreground" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@id/HorizontalBar"
+        android:layout_toLeftOf="@id/WPM"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:scaleType="fitStart"
+        android:src="@drawable/back_arrow"
+        android:onClick="back"/>
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/WPM"
+        android:layout_alignTop="@id/WPM"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:textSize="25dp" 
+        android:id="@+id/TokenCount"
+        android:text="0"
+        android:textColor="@color/foreground"
+        android:layout_marginRight="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/WPM"
+        android:layout_alignTop="@id/WPM"
+        android:padding="5dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/token"
+        android:layout_toLeftOf="@id/TokenCount"
+        android:layout_toRightOf="@id/WPM" />
+
+    <!-- End Header -->
+
+    <TextView
+        android:id="@+id/Words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/WPM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:text="0 Words"
+        android:textColor="@color/foreground" />
+    <TextView
+        android:id="@+id/Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Words"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:text="00:00"
+        android:textColor="@color/foreground" />
+    <!-- User Input EditText -->
+    <EditText
+        android:id="@+id/UserInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="20" 
+        android:background="@android:drawable/editbox_background_normal"
+        android:hint="Type Here!"
+        android:textSize="20dp"
+        android:inputType="textFilter" >
+        <requestFocus />
+    <!-- Prompt EditText -->
+    </EditText>
+    	<EditText
+        android:id="@+id/Prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/UserInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="20" 
+        android:background="@android:drawable/editbox_background_normal"
+        android:editable="false"
+        android:textSize="20dp"/>
+   
+</RelativeLayout>
