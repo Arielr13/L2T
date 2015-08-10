@@ -101,7 +101,8 @@
         android:background="@android:drawable/editbox_background_normal"
         android:hint="Type Here!"
         android:textSize="20dp"
-        android:inputType="textFilter" >
+        android:inputType="textFilter" 
+        android:singleLine = "true">
         <requestFocus />
     <!-- Prompt EditText -->
     </EditText>
@@ -115,6 +116,7 @@
         android:ems="20" 
         android:background="@android:drawable/editbox_background_normal"
         android:editable="false"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:singleLine = "true"/>
    
 </RelativeLayout>

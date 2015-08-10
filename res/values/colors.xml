@@ -2,5 +2,6 @@
 <resources>
  <color name="background">#6E6E6E</color>
  <color name="orange">#E35D26</color>
+ <color name="purple">#523C88</color>
  <color name="foreground">#ffffff</color>
 </resources>

@@ -8,5 +8,6 @@
     <string name="title_activity_study">Study</string>
     <string name="title_activity_level_select">LevelSelect</string>
     <string name="title_activity_race">Race</string>
+    <string name="title_activity_results">Results</string>
 
 </resources>

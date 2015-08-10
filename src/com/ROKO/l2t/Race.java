@@ -32,6 +32,8 @@ public class Race extends Activity {
 	double correctWords=0;
 	String setTextString;
 	double elapsedseconds;
+	int level;
+	int wpmcount;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class Race extends Activity {
 		timer = (TextView)findViewById(R.id.Timer);
 		prompt = (EditText)findViewById(R.id.Prompt);
 		input = (EditText)findViewById(R.id.UserInput);
-		int level = getIntent().getExtras().getInt("level");
+		level = getIntent().getExtras().getInt("level");
 		firsttime = true;
 		
 		
@@ -68,16 +70,16 @@ public class Race extends Activity {
 		
 		
 		String sentences[] = {
-				"The quick brown fox",
-				"This is Sparta",
-				"Jumps over the lazy dog",
-				"What is love?",
-				"Baby don't hurt me",
-				"Don't hurt me no more",
-				"She's all I want and I've waited for so long",
-				"Stacy, can't you see you're just not the girl for me",
-				"I know it might be wrong but I'm in love with Stacy's mom",
-				"Stacy's mom has got it goin' on"};
+				"Imagination is more important than knowledge",
+				"If music be the food of love, play on",
+				"The way to get started is to quit talking and begin doing",
+				"Obstacles are those frightful things you see when you take your eyes off the goal",
+				"I skate where the puck is going to be, not where it has been",
+				"When you come to a fork in the road, take it",
+				"We may affirm absolutely that nothing great in the world has been accomplished without passion",
+				"The life which is unexamined is not worth living",
+				"Live as if you were to die tomorrow. Learn as if you were to live forever",
+				"Ask not what your country can do for you, ask what you can do for your country"};
 		
 		
 		counter = 0;
@@ -121,18 +123,20 @@ public class Race extends Activity {
 				setTextString+=sentence[i]+" ";
 			}
 			if(setTextString.trim().equals("")){
-				//Intent dosomething = new Intent(Race.this, LevelSelect.class);
-            	//startActivity(dosomething);
-				Toast.makeText(getApplicationContext(),"Leave Activity",Toast.LENGTH_SHORT).show();
+				timerHandler.removeCallbacks(timerRunnable);
+				Intent results = new Intent(Race.this, Results.class);
+					results.putExtra("level",level);
+	        		results.putExtra("words", (int)correctWords);
+	        		results.putExtra("wpm", wpmcount);
+            	startActivity(results);
 			}
 			prompt.setText(setTextString.trim());
 			input.getText().clear();
 			
-			
 			words.setText((int)correctWords+" Words");
 			tokens.setText((int)correctWords+"");
 			double wps = (correctWords/elapsedseconds);
-			int wpmcount = (int)(wps*60);
+			wpmcount = (int)(wps*60);
 			if (wpmcount<150){
 				wpm.setText(wpmcount+" WPM");
 			}
@@ -166,8 +170,12 @@ public class Race extends Activity {
             timer.setText((minutesremaining)+":"+(showseconds));
             
             if(totalsecondsremaining==0){
-            	Intent dosomething = new Intent(Race.this, LevelSelect.class);
-            	startActivity(dosomething);
+            	timerHandler.removeCallbacks(timerRunnable);
+            	Intent results = new Intent(Race.this, Results.class);
+            		results.putExtra("level",level);
+            		results.putExtra("words", (int)correctWords);
+            		results.putExtra("wpm", wpmcount);
+            	startActivity(results);
             }
             timerHandler.postDelayed(this, 500);
         }
