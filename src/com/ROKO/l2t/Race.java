@@ -130,7 +130,12 @@ public class Race extends Activity {
 	        		results.putExtra("wpm", wpmcount);
             	startActivity(results);
 			}
-			prompt.setText(setTextString.trim());
+			if(sentence.length-counter==1){
+				prompt.setText(setTextString.trim()+" -- Press Space to Submit");
+			}
+			else{
+				prompt.setText(setTextString.trim());
+			}
 			input.getText().clear();
 			
 			words.setText((int)correctWords+" Words");
