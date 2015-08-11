@@ -3,16 +3,23 @@ package com.ROKO.l2t;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +31,7 @@ public class Race extends Activity {
 	TextView timer;
 	EditText prompt;
 	EditText input;
+	SeekBar seekbar;
 	long startTime = 0;
 	int totaltime;
 	boolean firsttime;
@@ -34,6 +42,7 @@ public class Race extends Activity {
 	double elapsedseconds;
 	int level;
 	int wpmcount;
+	Handler mHandler = new Handler();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +50,48 @@ public class Race extends Activity {
 		setContentView(R.layout.race);
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+		seekbar = (SeekBar)findViewById(R.id.SeekBar);
+		seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+	        int originalProgress;
+	        @Override
+	        public void onStopTrackingTouch(SeekBar seekBar) {
+	        }
+	        @Override
+	        public void onStartTrackingTouch(SeekBar seekBar) {
+	            originalProgress = seekBar.getProgress();
+	        }
+	        @Override
+	        public void onProgressChanged(SeekBar seekBar, int arg1, boolean fromUser) {
+	            if(fromUser == true){
+	                seekBar.setProgress(originalProgress);
+	            }               
+	        }
+	    });
 		
+		 new Thread(new Runnable() {
+		        @Override
+		        public void run() { 
+		            while (true) {
+		                try {
+		                    Thread.sleep(100);
+		                    mHandler.post(new Runnable() {
+
+		                        @Override
+		                        public void run() {
+		                        	seekbar.setMax(0);
+		                    		seekbar.setMax(100);
+		                    		double progress = (wpmcount/100)*100;
+		                    		seekbar.setProgress((int)progress);
+		                        }
+		                    });
+		                } catch (Exception e) {
+		                    
+		                }
+		            }
+		        }
+		    }).start();
+		 
+		 
 		wpm = (TextView)findViewById(R.id.WPM);
 		tokens = (TextView)findViewById(R.id.TokenCount);
 		words = (TextView)findViewById(R.id.Words);
@@ -51,22 +101,7 @@ public class Race extends Activity {
 		level = getIntent().getExtras().getInt("level");
 		firsttime = true;
 		
-		
-		int times[] = {
-				30,
-				30,
-				30,
-				30,
-				30,
-				30,
-				30,
-				30,
-				30,
-				30,};
-		
-		
-		totaltime=times[level-1]-1;
-		timer.setText(times[level-1]/60+":"+times[level-1]%60);
+		timer.setText("0:00");
 		
 		
 		String sentences[] = {
@@ -90,7 +125,11 @@ public class Race extends Activity {
 			setTextString+=sentence[i]+" ";
 		}
 		prompt.setText("");
-		prompt.setText(setTextString.trim());
+		String setTextStringAfterColor="";
+		for(int i=counter+1;i<sentence.length;i++){
+			setTextStringAfterColor+=sentence[i]+" ";
+		}
+		prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+"</font> "+setTextStringAfterColor));
 		
 		input.addTextChangedListener(new TextWatcher() {
 		    @Override
@@ -112,41 +151,90 @@ public class Race extends Activity {
 	}
 	
 	public void parseInput(String s){
-		if(s.contains(" ")){
-			if(s.trim().equals(sentence[counter])){
-				correctWords++;
-			}
-			counter++;
-			prompt.getText().clear();
-			setTextString="";
+		if((sentence[counter]+" ").contains(s)){
+			String setTextStringAfterColor="";
+			
 			for(int i=counter;i<sentence.length;i++){
 				setTextString+=sentence[i]+" ";
 			}
-			if(setTextString.trim().equals("")){
-				timerHandler.removeCallbacks(timerRunnable);
-				Intent results = new Intent(Race.this, Results.class);
-					results.putExtra("level",level);
-	        		results.putExtra("words", (int)correctWords);
-	        		results.putExtra("wpm", wpmcount);
-            	startActivity(results);
+			for(int i=counter+1;i<sentence.length;i++){
+				setTextStringAfterColor+=sentence[i]+" ";
 			}
 			if(sentence.length-counter==1){
-				prompt.setText(setTextString.trim()+" -- Press Space to Submit");
+				prompt.getText().clear();
+				prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+" -- Press Space to Submit</font>"));
 			}
-			else{
-				prompt.setText(setTextString.trim());
+			else if((sentence.length-counter>1)){
+				prompt.getText().clear();
+				prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+"</font> "+setTextStringAfterColor));
 			}
-			input.getText().clear();
 			
-			words.setText((int)correctWords+" Words");
-			tokens.setText((int)correctWords+"");
-			double wps = (correctWords/elapsedseconds);
-			wpmcount = (int)(wps*60);
-			if (wpmcount<150){
-				wpm.setText(wpmcount+" WPM");
+			if(s.contains(" ")){
+				counter++;
+				correctWords++;
+				setTextString="";
+				setTextStringAfterColor="";
+				words.setText((int)correctWords+" Words");
+				tokens.setText((int)correctWords+"");
+				double wps = (correctWords/elapsedseconds);
+				wpmcount = (int)(wps*60);
+				if (wpmcount<150){
+					wpm.setText(wpmcount+" WPM");
+				}
+				else{
+					wpm.setText("Max WPM");
+				}
+				for(int i=counter;i<sentence.length;i++){
+					setTextString+=sentence[i]+" ";
+				}
+				for(int i=counter+1;i<sentence.length;i++){
+					setTextStringAfterColor+=sentence[i]+" ";
+				}
+				if(sentence.length-counter==1){
+					prompt.getText().clear();
+					input.getText().clear();
+					prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+" -- Press Space to Submit</font>"));
+				}
+				else if((sentence.length-counter>1)){
+					prompt.getText().clear();
+					input.getText().clear();
+					prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+"</font> "+setTextStringAfterColor));
+				}
+				else{
+					timerHandler.removeCallbacks(timerRunnable);
+					Intent results = new Intent(Race.this, Results.class);
+						results.putExtra("level",level);
+		        		results.putExtra("words", (int)correctWords);
+		        		results.putExtra("wpm", wpmcount);
+	            	startActivity(results);
+				}
+			}	
+		}
+		else{
+			String setTextStringAfterError="";
+			for(int i=counter;i<sentence.length;i++){
+				setTextString+=sentence[i]+" ";
+			}
+			for(int i=counter+1;i<sentence.length;i++){
+				setTextStringAfterError+=sentence[i]+" ";
+			}
+			if(sentence.length-counter==1){
+				prompt.setText(Html.fromHtml("<font color='#ff0000'> "+setTextString.split(" ")[0].trim()+" -- Press Space to Submit</font>"));
 			}
 			else{
-				wpm.setText("Max WPM");
+				prompt.setText(Html.fromHtml("<font color='#ff0000'> "+setTextString.split(" ")[0].trim()+"</font> "+setTextStringAfterError));
+			}
+			
+			if(s.contains(" ")){
+				Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+				 v.vibrate(500);
+				if(sentence.length-counter==1){
+					prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+" -- Press Space to Submit</font>"));
+				}
+				else{
+					prompt.setText(Html.fromHtml("<font color='#0000ff'> "+setTextString.split(" ")[0].trim()+"</font> "+setTextStringAfterError));
+				}
+				input.getText().clear();
 			}
 		}
 	}	
@@ -161,27 +249,18 @@ public class Race extends Activity {
         	int totalseconds = totaltime;
             long millis = System.currentTimeMillis() - startTime;
             elapsedseconds = (millis / 1000);
-            int totalsecondsremaining = totalseconds-(int)elapsedseconds;
-            int minutesremaining=totalsecondsremaining/60;
-            int secondsremaining=totalsecondsremaining%60;
-            String showseconds;
-            if(secondsremaining<10){
-            	showseconds = "0"+secondsremaining;
+            int elapsedminutes = (int)elapsedseconds/60;
+            int elapsedsecondsshow = (int)elapsedseconds%60;
+            String showseconds = "";
+            
+            if(elapsedseconds<10){
+            	showseconds = "0"+elapsedsecondsshow;
             }
             else{
-            	showseconds = ""+secondsremaining;
+            	showseconds = ""+elapsedsecondsshow;
             }
             
-            timer.setText((minutesremaining)+":"+(showseconds));
-            
-            if(totalsecondsremaining==0){
-            	timerHandler.removeCallbacks(timerRunnable);
-            	Intent results = new Intent(Race.this, Results.class);
-            		results.putExtra("level",level);
-            		results.putExtra("words", (int)correctWords);
-            		results.putExtra("wpm", wpmcount);
-            	startActivity(results);
-            }
+            timer.setText((elapsedminutes)+":"+(showseconds));
             timerHandler.postDelayed(this, 500);
         }
     };
@@ -195,5 +274,6 @@ public class Race extends Activity {
 	    super.onPause();  // Always call the superclass method first
 	    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     	imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+    	timerHandler.removeCallbacks(timerRunnable);
 	}
 }

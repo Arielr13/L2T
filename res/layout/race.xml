@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" 
-    android:background="@color/background" >
+    android:background="@color/background"
+    tools:context="${relativePackage}.${activityClass}" >
 
 	<!-- Header -->
 
@@ -118,5 +118,16 @@
         android:editable="false"
         android:textSize="20dp"
         android:singleLine = "true"/>
+    		
+    <SeekBar
+        android:id="@+id/SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/Prompt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="fitCenter"/>
    
 </RelativeLayout>
