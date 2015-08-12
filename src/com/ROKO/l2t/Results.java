@@ -30,7 +30,7 @@ public class Results extends Activity {
 		TextView WordsDisplay = (TextView)findViewById(R.id.WordsDisplay);
 		ImageView ImageResults = (ImageView)findViewById(R.id.ImageResult);
 		
-		int needWPM[] = {30, 30, 30, 30, 30, 30, 30, 30, 30, 30};
+		int needWPM[] = {20, 20, 20, 20, 25, 25, 30, 30, 30, 35, 35, 35, 40, 40, 40, 20};
 		
 		if(wpm>=needWPM[level-1]){
 			passed=true;

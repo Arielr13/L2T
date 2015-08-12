@@ -118,7 +118,7 @@
         android:editable="false"
         android:textSize="20dp"
         android:singleLine = "true"/>
-    		
+   <!--  	
     <SeekBar
         android:id="@+id/SeekBar"
         android:layout_width="match_parent"
@@ -128,6 +128,29 @@
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:thumb="@drawable/temp_monster"/>-->
+		
+		<TextView
+    	    android:layout_width="match_parent"
+    	    android:layout_height="2dp"
+    	    android:layout_above="@+id/Prompt"
+    	    android:layout_alignParentLeft="true"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="2dp"
+			android:background="@color/foreground"
+    	    android:layout_marginBottom="40dp"/>
+		
+    	<ImageView
+    	    android:id="@+id/MovingImage"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="40dp"
+    	    android:layout_above="@+id/Prompt"
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginBottom="20dp"
+    	    android:scaleType="fitStart"
+    	    android:src="@drawable/temp_monster" />
+
+    	   
    
 </RelativeLayout>

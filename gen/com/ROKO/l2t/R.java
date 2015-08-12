@@ -1948,13 +1948,13 @@ containing a value of this type.
         public static final int LevelResult=0x7f090071;
         public static final int LevelText=0x7f09005a;
         public static final int LogoutButton=0x7f090077;
+        public static final int MovingImage=0x7f090070;
         public static final int NeedToPass=0x7f090072;
         public static final int Next=0x7f090076;
         public static final int NotificationSettings=0x7f09007c;
         public static final int Privacy=0x7f09007a;
         public static final int Prompt=0x7f09006f;
         public static final int Search=0x7f09007d;
-        public static final int SeekBar=0x7f090070;
         public static final int Terms=0x7f090078;
         public static final int Timer=0x7f09006d;
         public static final int Title=0x7f090051;

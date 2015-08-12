@@ -435,13 +435,13 @@ int id LevelListView 0x7f090059
 int id LevelResult 0x7f090071
 int id LevelText 0x7f09005a
 int id LogoutButton 0x7f090077
+int id MovingImage 0x7f090070
 int id NeedToPass 0x7f090072
 int id Next 0x7f090076
 int id NotificationSettings 0x7f09007c
 int id Privacy 0x7f09007a
 int id Prompt 0x7f09006f
 int id Search 0x7f09007d
-int id SeekBar 0x7f090070
 int id Terms 0x7f090078
 int id Timer 0x7f09006d
 int id Title 0x7f090051

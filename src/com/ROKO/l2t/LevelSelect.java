@@ -26,7 +26,8 @@ import android.widget.Toast;
 
 public class LevelSelect extends Activity {
 
-	int unlocked = 5;
+	int unlocked = 16;
+	int levels = 16;
 	LevelSelectAdapter levelselectadapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class LevelSelect extends Activity {
 		
 		List<Integer> levelList = new ArrayList<Integer>();	 
 		public LevelSelectAdapter(){
-			for(int i=1; i<=10; i++){
+			for(int i=1; i<=levels; i++){
 				levelList.add(i);
 			}
 		}
