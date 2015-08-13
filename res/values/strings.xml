@@ -9,5 +9,9 @@
     <string name="title_activity_level_select">LevelSelect</string>
     <string name="title_activity_race">Race</string>
     <string name="title_activity_results">Results</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="app_id">1678876582333343</string>
+    <string name="title_activity_facebook_signup">FacebookSignup</string>
 
 </resources>

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.ROKO.l2t.Study.Definition;
+import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,7 +27,8 @@ import android.widget.Toast;
 
 public class LevelSelect extends Activity {
 
-	int unlocked = 16;
+	ParseUser user = ParseUser.getCurrentUser();
+	int unlocked = user.getInt("levelsUnlocked");
 	int levels = 16;
 	LevelSelectAdapter levelselectadapter;
 	@Override
@@ -83,17 +85,17 @@ public class LevelSelect extends Activity {
 			
 			if(arg1==null){
 		        LayoutInflater inflater = (LayoutInflater) LevelSelect.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		        arg1 = inflater.inflate(R.layout.level_select_item, arg2,false);;
+		        arg1 = inflater.inflate(R.layout.level_select_item, arg2,false);
 		    }
 			
 			TextView LevelText = (TextView)arg1.findViewById(R.id.LevelText);
 			Integer level = levelList.get(arg0);
 			LevelText.setText("Level " +level);
-			LevelText.setTextColor(Color.parseColor("#ffffff"));
+			arg1.setBackgroundColor(Color.parseColor("#ffffff"));
 			
 			
 			if(level>unlocked){
-				LevelText.setTextColor(Color.parseColor("#505050"));
+				arg1.setBackgroundColor(Color.parseColor("#d3d3d3"));
 			}
 			if(level>=unlocked){
 				ImageView trophy = (ImageView)arg1.findViewById(R.id.TrophyImage);

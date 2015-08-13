@@ -1,11 +1,14 @@
 package com.ROKO.l2t;
 
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Home extends Activity {
@@ -14,6 +17,11 @@ public class Home extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
+		
+		ParseUser user = ParseUser.getCurrentUser();
+		
+		TextView username =(TextView)findViewById(R.id.UsernameField);
+		username.setText(user.getString("username"));
 	}
 	
 	public void goStudy(View v) {

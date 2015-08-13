@@ -128,51 +128,191 @@ public class Study extends Activity {
 			
 		    	List<Definition> definitionsList = new ArrayList<Definition>();	    	
 		    	definitionsList.add(set(
-		    			"TTYL",
-		    			"Talk To You Later"
+		    			"2MORO",
+		    			"Tomorrow"
 		    			));
-		    	definitionsList.add(set(
-		    			"LOL",
-		    			"Laugh Out Loud"
+		    			definitionsList.add(set(
+		    			"2NITE",
+		    			"Tonight"
 		    			));
-		    	definitionsList.add(set(
-		    			"LMK",
-		    			"Let Me Know"
+		    			definitionsList.add(set(
+		    			"BRB",
+		    			"Be Right Back"
 		    			));
-		    	definitionsList.add(set(
-		    			"FYI",
-		    			"For Your Information"
+		    			definitionsList.add(set(
+		    			"BTW",
+		    			"By The Way"
 		    			));
-		    	definitionsList.add(set(
+		    			definitionsList.add(set(
+		    			"B4N",
+		    			"Bye For Now"
+		    			));
+		    			definitionsList.add(set(
+		    			"BCNU",
+		    			"Be Seeing You"
+		    			));
+		    			definitionsList.add(set(
+		    			"DBEYR",
+		    			"Don’t Believe Everything You Read"
+		    			));
+		    			definitionsList.add(set(
+		    			"DILLIGAD",
+		    			"Do I Look Like I Give A Damn?"
+		    			));
+		    			definitionsList.add(set(
+		    			"CYA",
+		    			"See Ya"
+		    			));
+		    			definitionsList.add(set(
+		    			"FUD",
+		    			"Fear, Uncertainty, and Disinformation "
+		    			));
+		    			definitionsList.add(set(
+		    			"FWIW ",
+		    			"For What It's Worth -or- Forgot Where I Was"
+		    			));
+		    			definitionsList.add(set(
+		    			"GR8",
+		    			"Great"
+		    			)); definitionsList.add(set(
+		    			"ILY",
+		    			"I Love You"
+		    			));
+		    			definitionsList.add(set(
+		    			"IMHO",
+		    			"In My Humble Opinion"
+		    			));
+		    			definitionsList.add(set(
+		    			"IRL",
+		    			"In Real Life "
+		    			));
+		    			definitionsList.add(set(
+		    			"ISO ",
+		    			"In Search Of"
+		    			));
+		    			definitionsList.add(set(
+		    			"JK",
+		    			"Just Kidding"
+		    			));
+
+		    			definitionsList.add(set(
 		    			"L8R",
 		    			"Later"
 		    			));
-		    	definitionsList.add(set(
-		    			"L2T",
-		    			"Learn To Type"
+		    			definitionsList.add(set(
+		    			"LMBO",
+		    			"Laughing My Butt Off"
 		    			));
-		    	definitionsList.add(set(
+		    			definitionsList.add(set(
+		    			"LOL",
+		    			"Laughing Out Loud"
+		    			));
+		    			definitionsList.add(set(
+		    			"LYLAS",
+		    			"Love You Like A Sister"
+		    			));
+		    			definitionsList.add(set(
+		    			"MHOTY",
+		    			"My Hat's Off To You"
+		    			));
+		    			definitionsList.add(set(
+		    			"NIMBY",
+		    			"Not In My Back Yard"
+		    			));
+		    			definitionsList.add(set(
+		    			"NP",
+		    			"No Problem -or- Nosy Parents"
+		    			));
+		    			definitionsList.add(set(
+		    			"NUB",
+		    			"New person to a site or game"
+		    			));
+		    			definitionsList.add(set(
+		    			"OIC",
+		    			"Oh, I See"
+		    			));
+		    			definitionsList.add(set(
+		    			"OMG",
+		    			"Oh My God "
+		    			));
+		    			definitionsList.add(set(
+		    			"OT",   
+		    			"Off Topic"
+		    			));
+		    			definitionsList.add(set(
+		    			"POV",
+		    			"Point Of View"
+		    			)); definitionsList.add(set(
+		    			"RBTL",
+		    			"Read Between The Lines"
+		    			));
+		    			definitionsList.add(set(
+		    			"BFF",
+		    			"Best Friends Forever "
+		    			));
+		    			definitionsList.add(set(
+		    			"RT",
+		    			"Real Time"
+		    			));
+		    			definitionsList.add(set(
+		    			"THX or TX or THKS ",
+		    			"Thanks"
+		    			));
+		    			definitionsList.add(set(
+		    			"SH",
+		    			"Stuff Happens"
+		    			));
+		    			definitionsList.add(set(
+		    			"SITD",
+		    			"Still In The Dark"
+		    			));
+		    			definitionsList.add(set(
+		    			"SOL",
+		    			"Sooner Or Later "
+		    			));
+		    			definitionsList.add(set(
+		    			"STBY",
+		    			"Sucks To Be You"
+		    			));
+		    			definitionsList.add(set(
+		    			"SWAK",
+		    			"Sealed (or Sent) With A Kiss"
+		    			));
+		    			definitionsList.add(set(
+		    			"RTM",
+		    			"Read The Manual"
+		    			));
+		    			definitionsList.add(set(
+		    			"TLC",
+		    			"Tender Loving Care"
+		    			));
+		    			definitionsList.add(set(
 		    			"TMI",
 		    			"Too Much Information"
 		    			));
-		    	definitionsList.add(set(
-		    			"NOYB",
-		    			"None Of Your Business"
+		    			definitionsList.add(set(
+		    			"TTYL",
+		    			"Talk To You Later"
 		    			));
-		    	definitionsList.add(set(
-		    			"XOXO",
-		    			"Hugs and Kisses"
+		    			definitionsList.add(set(
+		    			"TYVM",
+		    			"Thank You Very Much"
 		    			));
-		    	definitionsList.add(set(
-		    			"NBD",
-		    			"No Big Deal"
+		    			definitionsList.add(set(
+		    			"VBG ",
+		    			"Very Big Grin"
 		    			));
-		    	definitionsList.add(set(
-		    			"KIT",
-		    			"Keep In Touch"
+		    			definitionsList.add(set(
+		    			"WEG",
+		    			"Wicked Evil Grin"
+		    			)); definitionsList.add(set(
+		    			"WYWH",
+		    			"Wish You Were Here"
 		    			));
-		    	
-		    	
+
+
+
+	
 		    	//Search logic
 		    	List<Definition> finalDefinitionsList = new ArrayList<Definition>();
 		    	for(int i=0;i<definitionsList.size();i++){

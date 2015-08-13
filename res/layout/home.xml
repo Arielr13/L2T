@@ -12,17 +12,17 @@
     	android:layout_weight="1">
 		    	
     	<!-- Header -->
-	    <TextView
+	    <ImageView
 	        android:id="@+id/Title"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="25dp"
 	        android:layout_alignParentTop="true"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="15dp"
 	        android:layout_marginBottom="15dp"
-	        android:text="L2T"
-	        android:textSize="25dp"
-	        android:textColor="@color/foreground"/>
+	        android:src="@drawable/logo"
+	        android:scaleType="fitCenter"
+	        android:paddingTop="3dp"/>
 	    <TextView
 	        android:layout_width="fill_parent"
 			android:layout_height="2dp"
@@ -93,7 +93,7 @@
 	  	        	    android:layout_width="match_parent"
 	  	        	    android:layout_height="match_parent"
 	  	        	    android:layout_margin="10dp"
-	  	        	    android:background="@color/purple"
+	  	        	    android:background="@color/blue"
 	  	        	    android:scaleType="fitCenter"
 	  	        	    android:src="@drawable/study"
 	  	        	    android:layout_weight="1"
@@ -104,7 +104,7 @@
 	  	        	    android:layout_width="match_parent"
 	  	        	    android:layout_height="match_parent"
 	  	        	    android:layout_margin="10dp"
-	  	        	    android:background="@color/purple"
+	  	        	    android:background="@color/blue"
 	  	        	    android:scaleType="fitCenter"
 	  	        	    android:src="@drawable/train"
 	  	        	    android:layout_weight="1"
@@ -123,7 +123,7 @@
 	  	        	    android:layout_width="match_parent"
 	  	        	    android:layout_height="match_parent"
 	  	        	    android:layout_margin="10dp"
-	  	        	    android:background="@color/purple"
+	  	        	    android:background="@color/blue"
 	  	        	    android:scaleType="fitCenter"
 	  	        	    android:src="@drawable/challenge"
 	  	        	    android:layout_weight="1"
@@ -133,7 +133,7 @@
 	  	        	    android:layout_width="match_parent"
 	  	        	    android:layout_height="match_parent"
 	  	        	    android:layout_margin="10dp"
-	  	        	    android:background="@color/purple"
+	  	        	    android:background="@color/blue"
 	  	        	    android:scaleType="fitCenter"
 	  	        	    android:src="@drawable/friends"
 	  	        	    android:layout_weight="1"

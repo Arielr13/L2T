@@ -1,5 +1,7 @@
 package com.ROKO.l2t;
 
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ public class Results extends Activity {
 	
 	boolean passed;
 	int level;
+	ParseUser user;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,12 @@ public class Results extends Activity {
 		TextView WordsDisplay = (TextView)findViewById(R.id.WordsDisplay);
 		ImageView ImageResults = (ImageView)findViewById(R.id.ImageResult);
 		
+		user = ParseUser.getCurrentUser();
+		int trialsCompleted = user.getInt("trialsCompleted");
+		user.increment("trialsCompleted");
+		int AWPM = user.getInt("AWPM");
+		user.put("AWPM", ((AWPM*trialsCompleted)+wpm)/(user.getInt("trialsCompleted")));
+		
 		int needWPM[] = {20, 20, 20, 20, 25, 25, 30, 30, 30, 35, 35, 35, 40, 40, 40, 20};
 		
 		if(wpm>=needWPM[level-1]){
@@ -39,6 +48,7 @@ public class Results extends Activity {
 			WPMDisplay.setText(wpm+" WPM");
 			WordsDisplay.setText(words +" Words");
 			ImageResults.setImageResource(R.drawable.trophy_active);
+			user.increment("levelsUnlocked");
 		}
 		else{
 			passed=false;
@@ -68,5 +78,11 @@ public class Results extends Activity {
 			race.putExtra("level",level);
 			startActivity(race);
 		}
+	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		user.saveInBackground();
 	}
 }

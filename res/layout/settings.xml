@@ -38,7 +38,8 @@
          android:textStyle="bold"
          android:padding="10dp"
          android:layout_marginBottom="10dp" 
-         android:id="@+id/LogoutButton"/>
+         android:id="@+id/LogoutButton"
+         android:onClick="logout"/>
 	
 	<TextView
 	    android:layout_width="match_parent"
@@ -46,7 +47,7 @@
 	    android:layout_below="@id/HorizontalBar"
 	    android:layout_marginTop="10dp"
 	    android:id="@+id/Terms"
-	    android:textColor="#ffffff"
+	    android:textColor="@color/foreground"
 	    android:text="Terms and Conditions"
 	    android:textStyle="bold"
 	    android:layout_marginLeft="10dp"
@@ -63,7 +64,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/HorizontalBar1"
 	    android:id="@+id/Privacy"
-	    android:textColor="#ffffff"
+	    android:textColor="@color/foreground"
 	    android:textStyle="bold"
 	    android:textSize="20dp"
 	    android:text="Privacy Policy"
@@ -81,7 +82,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_below="@id/HorizontalBar2"
 	    android:id="@+id/NotificationSettings"
-	    android:textColor="#ffffff"
+	    android:textColor="@color/foreground"
 	    android:textStyle="bold"
 	    android:textSize="20dp"
 	    android:text="Notification Settings"

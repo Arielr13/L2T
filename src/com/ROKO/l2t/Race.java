@@ -1,5 +1,7 @@
 package com.ROKO.l2t;
 
+import com.parse.ParseUser;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -53,6 +55,7 @@ public class Race extends Activity {
 	int level;
 	int wpmcount;
 	Handler mHandler = new Handler();
+	ParseUser user;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +139,8 @@ public class Race extends Activity {
 							
 			};
 			
+			user = ParseUser.getCurrentUser();
+			tokens.setText((user.getInt("tokenCount"))+"");
 			
 			counter = 0;
 			sentence = sentences[level-1].split(" ");
@@ -210,10 +215,12 @@ public class Race extends Activity {
 			    movingimage.startAnimation(moveLefttoRight);
 				
 				correctWords++;
+				user.increment("tokenCount");
 				setTextString="";
 				setTextStringAfterColor="";
 				words.setText((int)correctWords+" Words");
-				tokens.setText((int)correctWords+"");
+				//Toast.makeText(Race.this, (user.getInt("tokenCount"))+"", Toast.LENGTH_SHORT).show();
+				tokens.setText(user.getInt("tokenCount")+"");
 				double wps = (correctWords/elapsedseconds);
 				wpmcount = (int)(wps*60);
 				if (wpmcount<150){
@@ -314,5 +321,6 @@ public class Race extends Activity {
 	    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     	imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     	timerHandler.removeCallbacks(timerRunnable);
+    	user.saveInBackground();
 	}
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <color name="background">#6E6E6E</color>
+ <color name="background">#fff</color>
  <color name="orange">#E35D26</color>
  <color name="purple">#523C88</color>
- <color name="foreground">#ffffff</color>
+ <color name="foreground">#383838</color>
+ <color name="blue">#4AABED</color>
 </resources>
