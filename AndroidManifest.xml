@@ -15,7 +15,7 @@
     <application
         android:name=".L2T"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/temp_monster"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -70,17 +70,52 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        
         <activity
             android:name=".FacebookSignup"
             android:label="@string/title_activity_facebook_signup"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".Friends"
+            android:label="@string/title_activity_friends"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".FriendsNotifications"
+            android:label="@string/title_activity_friends_notifications"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Challenge"
+            android:label="@string/title_activity_challenge"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ChooseChallenge"
+            android:label="@string/title_activity_choose_challenge"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ChallengeProgress"
+            android:label="@string/title_activity_challenge_progress"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ChallengeRace"
+            android:label="@string/title_activity_challenge_race"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".ChallengeResults"
+            android:label="@string/title_activity_challenge_results" >
         </activity>
     </application>
 

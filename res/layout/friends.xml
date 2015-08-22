@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@color/background">
+
+     <TextView
+        android:id="@+id/FriendsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Friends"
+        android:textSize="25dp"
+        android:textColor="@color/foreground"/>
+    <TextView
+        android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="@color/foreground"
+		android:layout_below="@id/FriendsTitle"
+		android:layout_marginTop="0dp"
+		android:id="@+id/FriendsHorizontalBar"/>
+     <TextView
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="0"
+        android:layout_alignTop="@id/FriendsTitle"
+        android:layout_alignBottom="@id/FriendsTitle"
+        android:layout_alignParentRight="true"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:onClick="notification" 
+        android:id="@+id/Notifications"/>
+    
+   <!-- End Header -->
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/FriendsLinear"
+	    android:layout_below="@id/FriendsHorizontalBar"
+	    android:layout_marginTop="5dp">
+    <EditText
+        android:id="@+id/FriendsSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:singleLine="true"
+        android:ems="10" 
+        android:textColor="@color/foreground"
+        android:textCursorDrawable="@null"
+        android:layout_weight="1"
+        android:hint=" Search or Add New Friend"/>
+    
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:background="@null"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_friend"
+        android:layout_alignTop="@id/FriendsSearch"
+        android:layout_alignBottom="@id/FriendsSearch"
+    	android:layout_alignLeft="@id/FriendsSearch"
+    	android:layout_weight="4"
+    	android:padding="5dp"
+    	android:onClick="addFriend"
+    	android:id="@+id/FriendsAddButton"/>
+    
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/FriendsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/FriendsLinear"
+        android:divider="@color/foreground"
+        android:dividerHeight="1dp"
+        android:scrollbars="none">
+    </ListView>
+    
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/LoadingIcon"
+        android:indeterminate="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/FriendsLinear"/>
+
+</RelativeLayout>

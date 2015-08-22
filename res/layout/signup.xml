@@ -10,7 +10,7 @@
        android:layout_marginTop="15dp"
        android:layout_marginBottom="15dp"
        android:scaleType="fitCenter"
-       android:src="@drawable/logo" 
+       android:src="@drawable/logo_background" 
        android:id="@+id/SignupLogo"/>
    <EditText
        android:layout_width="match_parent"

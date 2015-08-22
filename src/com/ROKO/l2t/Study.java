@@ -19,6 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Study extends Activity {
 	
@@ -92,7 +93,6 @@ public class Study extends Activity {
 
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			
 			if(arg1==null){
 		        LayoutInflater inflater = (LayoutInflater) Study.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		        arg1 = inflater.inflate(R.layout.dictionary_item, arg2,false);

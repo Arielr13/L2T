@@ -13,5 +13,12 @@
     <string name="title_activity_signup">Signup</string>
     <string name="app_id">1678876582333343</string>
     <string name="title_activity_facebook_signup">FacebookSignup</string>
+    <string name="title_activity_friends">Friends</string>
+    <string name="title_activity_friends_notifications">FriendsNotifications</string>
+    <string name="title_activity_challenge">Challenge</string>
+    <string name="title_activity_choose_challenge">ChooseChallenge</string>
+    <string name="title_activity_challenge_progress">ChallengeProgress</string>
+    <string name="title_activity_challenge_race">ChallengeRace</string>
+    <string name="title_activity_challenge_results">ChallengeResults</string>
 
 </resources>

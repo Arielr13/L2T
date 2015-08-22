@@ -92,6 +92,7 @@ public class Signup extends Activity {
 		    .show();
 		}
 		else{
+			String lastname = "";
 			ParseUser user = new ParseUser();
 			user.setUsername(username);
 			user.setPassword(password);

@@ -197,7 +197,7 @@ public class Race extends Activity {
 			}
 			
 			//User submits correct word
-			if(s.contains(" ")){
+			if(s.contains(" ")&&!(s.equals(null)||s.equals(" "))){
 				counter++;
 				float now = ((float)counter/(float)sentence.length);
 				float before = (((float)counter-1)/(float)sentence.length);

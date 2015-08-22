@@ -3,6 +3,7 @@
  <color name="background">#fff</color>
  <color name="orange">#E35D26</color>
  <color name="purple">#523C88</color>
- <color name="foreground">#383838</color>
+ <!-- <color name="foreground">#383838</color> -->
+ <color name="foreground">#000</color>
  <color name="blue">#4AABED</color>
 </resources>

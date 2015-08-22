@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="${relativePackage}.${activityClass}" >
+
+	<!-- Header -->
+
+    <TextView
+        android:id="@+id/ChallengeWPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="0 WPM"
+        android:textColor="@color/foreground"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/ChallengeHorizontalBar"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/ChallengeWPM"
+        android:layout_marginTop="0dp"
+        android:background="@color/foreground" />
+	<!--  
+    <ImageButton
+        android:id="@+id/ChallengeBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@id/ChallengeHorizontalBar"
+        android:layout_toLeftOf="@id/ChallengeWPM"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:scaleType="fitStart"
+        android:src="@drawable/back_arrow"
+        android:onClick="back"/>
+        -->
+    
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ChallengeWPM"
+        android:layout_alignTop="@id/ChallengeWPM"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:textSize="25dp" 
+        android:id="@+id/ChallengeTokenCount"
+        android:text="0"
+        android:textColor="@color/foreground"
+        android:layout_marginRight="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ChallengeWPM"
+        android:layout_alignTop="@id/ChallengeWPM"
+        android:padding="5dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/token"
+        android:layout_toLeftOf="@id/ChallengeTokenCount"
+        android:layout_toRightOf="@id/ChallengeWPM" />
+
+    <!-- End Header -->
+
+    <TextView
+        android:id="@+id/ChallengeWords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ChallengeWPM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:text="0 Words"
+        android:textColor="@color/foreground" />
+    <TextView
+        android:id="@+id/ChallengeTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ChallengeWords"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:text="00:00"
+        android:textColor="@color/foreground" />
+    <!-- User Input EditText -->
+    <EditText
+        android:id="@+id/ChallengeUserInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="20" 
+        android:background="@android:drawable/editbox_background_normal"
+        android:hint="Type Here!"
+        android:textSize="20dp"
+        android:inputType="textFilter" 
+        android:singleLine = "true">
+        <requestFocus />
+    <!-- Prompt EditText -->
+    </EditText>
+    	<EditText
+        android:id="@+id/ChallengePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ChallengeUserInput"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="20" 
+        android:background="@android:drawable/editbox_background_normal"
+        android:editable="false"
+        android:textSize="20dp"
+        android:singleLine = "true"/>
+		
+		<TextView
+    	    android:layout_width="match_parent"
+    	    android:layout_height="2dp"
+    	    android:layout_above="@id/ChallengePrompt"
+    	    android:layout_alignParentLeft="true"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="2dp"
+			android:background="@color/foreground"
+    	    android:layout_marginBottom="40dp"/>
+		
+    	<ImageView
+    	    android:id="@+id/ChallengeMovingImage"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="40dp"
+    	    android:layout_above="@id/ChallengePrompt"
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_marginBottom="20dp"
+    	    android:scaleType="fitStart"
+    	    android:src="@drawable/temp_monster" />
+
+    	   
+   
+</RelativeLayout>

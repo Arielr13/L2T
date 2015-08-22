@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@color/background">
+
+    <TextView
+        android:id="@+id/ChallengeProgressTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Challenge Progress"
+        android:textSize="25dp"
+        android:textColor="@color/foreground"/>
+    <TextView
+        android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="@color/foreground"
+		android:layout_below="@id/ChallengeProgressTitle"
+		android:layout_marginTop="0dp"
+		android:id="@+id/ChallengeProgressHorizontalBar"/>
+	
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/foreground"
+        android:textSize="30dp"
+        android:text="1st"
+        android:layout_below="@id/ChallengeProgressHorizontalBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:id="@+id/Place"/>
+
+    <TextView
+        android:id="@+id/ChallengeProgressWPM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="30 WPM"
+        android:textColor="@color/foreground"
+        android:textSize="20dp"
+        android:layout_alignTop="@id/Place"
+        android:layout_alignBottom="@id/Place"
+        android:gravity="center" />
+    <TextView
+        android:id="@+id/ChallengeProgressTokens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="40"
+        android:textColor="@color/foreground"
+        android:textSize="20dp"
+        android:layout_alignTop="@id/Place"
+        android:layout_alignBottom="@id/Place"
+        android:gravity="center" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/ChallengeProgressTokens"
+        android:layout_toRightOf="@id/Place"
+        android:layout_marginRight="2dp"
+        android:layout_alignTop="@id/Place"
+        android:layout_alignBottom="@id/Place"
+        android:src="@drawable/token"
+        android:scaleType="fitEnd"
+        android:padding="5dp"/>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_below="@id/Place">
+    
+    	<TextView
+    	    android:layout_width="match_parent"
+    	    android:layout_height="2dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_alignParentLeft="true"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="2dp"
+			android:background="@color/foreground"/>
+		
+    	<ImageView
+    	    android:id="@+id/FromUserMovingImage"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="40dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_alignParentLeft="true"
+    	    android:scaleType="fitStart"
+    	    android:src="@drawable/temp_monster" />
+    	
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_below="@id/Place">
+    
+    	<TextView
+    	    android:layout_width="match_parent"
+    	    android:layout_height="2dp"
+    	    android:layout_alignParentLeft="true"
+    	    android:layout_centerVertical="true"
+			android:layout_marginLeft="2dp"
+			android:layout_marginRight="2dp"
+			android:background="@color/foreground"/>
+		
+    	<ImageView
+    	    android:id="@+id/ToUserMovingImage"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="40dp"
+    	    android:layout_centerVertical="true"
+    	    android:layout_alignParentLeft="true"
+    	    android:scaleType="fitStart"
+    	    android:src="@drawable/temp_monster" />
+    
+	</RelativeLayout>
+	<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginBottom="40dp" 
+	    android:background="@color/blue"
+	    android:text="Take Your Turn!"
+	    android:layout_centerHorizontal="true"
+	    android:padding="10dp"
+	    android:textSize="20dp"
+	    android:onClick="turn"
+	    android:id="@+id/TurnButton"/>
+</RelativeLayout>

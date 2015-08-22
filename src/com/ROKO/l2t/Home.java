@@ -33,12 +33,12 @@ public class Home extends Activity {
 		startActivity(train);
 	}
 	public void goChallenge(View v) {
-		Toast toast = Toast.makeText(getApplicationContext(), "Challenge", Toast.LENGTH_SHORT);
-		toast.show();
+		Intent challenge = new Intent(this, Challenge.class);
+		startActivity(challenge);
 	}
 	public void goFriends(View v) {
-		Toast toast = Toast.makeText(getApplicationContext(), "Friends", Toast.LENGTH_SHORT);
-		toast.show();
+		Intent friends = new Intent(this, Friends.class);
+		startActivity(friends);
 	}
 	public void goSettings(View v) {
 		Intent settings = new Intent(this, Settings.class);

@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:background="@color/background">
+
+     <TextView
+        android:id="@+id/ChooseChallengeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Choose A Friend"
+        android:textSize="25dp"
+        android:textColor="@color/foreground"/>
+    <TextView
+        android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="@color/foreground"
+		android:layout_below="@id/ChooseChallengeTitle"
+		android:layout_marginTop="0dp"
+		android:id="@+id/ChooseChallengeHorizontalBar"/>
+    
+   <!-- End Header -->
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:id="@+id/ChooseChallengeLinear"
+	    android:layout_below="@id/ChooseChallengeHorizontalBar"
+	    android:layout_marginTop="5dp">
+    <EditText
+        android:id="@+id/ChooseChallengeSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:singleLine="true"
+        android:ems="10" 
+        android:textColor="@color/foreground"
+        android:textCursorDrawable="@null"
+        android:layout_weight="1"
+        android:hint=" Search Friends"/>
+    
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/ChooseChallengeList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/ChooseChallengeLinear"
+        android:divider="@color/foreground"
+        android:dividerHeight="1dp"
+        android:scrollbars="none">
+    </ListView>
+    
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/LoadingIcon"
+        android:indeterminate="true"
+        android:layout_centerHorizontal="true" 
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/ChooseChallengeLinear"/>
+
+</RelativeLayout>
