@@ -1,0 +1,121 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="com.ROKO.l2t.User"
+    android:orientation="vertical">
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+    <LinearLayout
+        android:id="@+id/HeaderLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:id="@+id/UserTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="25dp"
+            android:text="Arielr13"
+            android:textColor="@color/foreground"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/UserTokens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/UserTitle"
+            android:layout_gravity="center"
+            android:text="150 Tokens"
+            android:textColor="@color/foreground"
+            android:textSize="15dp" />
+    	</LinearLayout>
+    	<Button
+    	    android:layout_height="40dp" 
+    	    android:layout_width="80dp"
+    	    android:background="@color/blue"
+    	    android:text="Save"
+    	    android:textColor="#fff"
+    	    android:layout_alignParentRight="true"
+    	    android:layout_marginTop="35dp"
+    	    android:layout_marginRight="5dp"
+    	    android:onClick="save"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/PreviewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:scaleType="fitCenter"
+            android:padding="15dp"
+            android:id="@+id/PreviewImage"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight=".5"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/BodyButton"
+            android:text="Bodies" 
+            android:textColor="@color/foreground"
+            android:background="@color/blue"
+            android:onClick="Body"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/EyeButton"
+            android:text="Eyes"
+            android:textColor="@color/foreground"
+            android:background="@color/background"
+            android:onClick="Mouth"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/TeethButton"
+            android:text="Teeth" 
+            android:textColor="@color/foreground"
+            android:background="@color/background"
+            android:onClick="Teeth"/>
+    
+	</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal" >
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true" 
+            android:id="@+id/userViewPager">
+        </android.support.v4.view.ViewPager>
+    
+	</LinearLayout>
+</LinearLayout>

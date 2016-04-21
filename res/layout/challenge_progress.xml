@@ -93,8 +93,7 @@
     	    android:layout_height="40dp"
     	    android:layout_centerVertical="true"
     	    android:layout_alignParentLeft="true"
-    	    android:scaleType="fitStart"
-    	    android:src="@drawable/temp_monster" />
+    	    android:scaleType="fitStart"/>
     	
     </RelativeLayout>
     
@@ -119,8 +118,7 @@
     	    android:layout_height="40dp"
     	    android:layout_centerVertical="true"
     	    android:layout_alignParentLeft="true"
-    	    android:scaleType="fitStart"
-    	    android:src="@drawable/temp_monster" />
+    	    android:scaleType="fitStart" />
     
 	</RelativeLayout>
 	<Button 
@@ -135,4 +133,16 @@
 	    android:textSize="20dp"
 	    android:onClick="turn"
 	    android:id="@+id/TurnButton"/>
+	<Button 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_marginBottom="40dp" 
+	    android:background="@color/blue"
+	    android:text="Go Home"
+	    android:layout_centerHorizontal="true"
+	    android:padding="10dp"
+	    android:textSize="20dp"
+	    android:onClick="home"
+	    android:id="@+id/HomeButton"/>
 </RelativeLayout>

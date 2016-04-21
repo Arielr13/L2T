@@ -12,6 +12,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +22,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -54,13 +57,15 @@ public class Friends extends Activity {
 	FriendsAdapter adapter;
 	TextView wpm;
 	TextView username;
-	ArrayList<ParseUser> friendsList = new ArrayList<ParseUser>();
+	ArrayList<ParseUser> friendsPrimList = new ArrayList<ParseUser>();
+	ArrayList<ParseUser> friendsFinList = new ArrayList<ParseUser>();
 	String friendid;
 	int size;
 	TextView notifications;
 	ImageButton add;
 	Boolean returnvalue = true;
 	TextView popupusername;
+	String search = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,12 +77,28 @@ public class Friends extends Activity {
 		lv = (ListView)findViewById(R.id.FriendsList);
 		getRelations();
 		setNotifications();
+		
+		searchbar.addTextChangedListener(new TextWatcher() {          
+	        @Override
+	        public void onTextChanged(CharSequence s, int start, int before, int count) {                                   
+	        	search=s.toString();
+	        	checkList();
+	        }
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {				
+			}
+			@Override
+			public void afterTextChanged(Editable s) {
+			}                       
+	    });
+		
 	}
 	
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		friendsList = new ArrayList<ParseUser>();
+		friendsPrimList = new ArrayList<ParseUser>();
+		friendsFinList = new ArrayList<ParseUser>();
 		getRelations();
 		setNotifications();
 	}
@@ -271,7 +292,7 @@ public class Friends extends Activity {
 	public void getUsers(final List<ParseObject> list, final int listSize, final int i){
 		size = listSize;
 		if(i==listSize){
-			lv.setAdapter(adapter);
+			checkList();
 		}
 		else{
 			if((list.get(i).getString("toUser")+"").equals(currentUser.getObjectId()+"")){
@@ -297,8 +318,20 @@ public class Friends extends Activity {
 	}
 	
 	public void addUser(ParseUser user){
-		friendsList.add(user);
+		friendsPrimList.add(user);
 	}
+	
+	//Used for search feature
+	public void checkList(){
+		friendsFinList = new ArrayList<ParseUser>();
+		for(int i=0; i<size; i++){
+			if((friendsPrimList.get(i).getUsername()+"").contains(search)){
+				friendsFinList.add(friendsPrimList.get(i));
+			}
+		}
+		lv.setAdapter(adapter);
+	}
+	
 	public void setNotifications(){
 		notifications = (TextView)findViewById(R.id.Notifications);
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Friends");
@@ -317,12 +350,12 @@ public class Friends extends Activity {
 	public class FriendsAdapter extends BaseAdapter{
 		@Override
 		public int getCount() {
-			return size;
+			return friendsFinList.size();
 		}
 
 		@Override
 		public ParseObject getItem(int arg0) {
-			return friendsList.get(arg0);
+			return friendsFinList.get(arg0);
 		}
 
 		@Override
@@ -338,6 +371,8 @@ public class Friends extends Activity {
 		        wpm = (TextView)arg1.findViewById(R.id.UserWPM);
 				username = (TextView)arg1.findViewById(R.id.UsernameField);
 		    }
+			
+			//Settings Logic
 			ImageButton settings = (ImageButton)arg1.findViewById(R.id.FriendsSettings);
 			settings.setOnClickListener(new View.OnClickListener() {
 		        @Override
@@ -355,7 +390,7 @@ public class Friends extends Activity {
 		            popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0); 
 		           
 		            popupusername=(TextView)popupView.findViewById(R.id.PopupUsername);
-		            popupusername.setText(friendsList.get(arg0).getUsername()+"");
+		            popupusername.setText(friendsFinList.get(arg0).getUsername()+"");
 		            
 		            TextView popupunfriend=(TextView)popupView.findViewById(R.id.PopupUnfriend);
 		            popupunfriend.setOnClickListener(new OnClickListener()
@@ -365,7 +400,7 @@ public class Friends extends Activity {
 		                {
 		                    ParseQuery<ParseObject> query = new ParseQuery("Friends");
 		            		query.whereEqualTo("fromUser", currentUser.getObjectId()+"");
-		            		query.whereEqualTo("toUser", friendsList.get(arg0).getObjectId()+"");
+		            		query.whereEqualTo("toUser", friendsFinList.get(arg0).getObjectId()+"");
 		            		query.whereEqualTo("areFriends", true);
 		            		query.findInBackground(new FindCallback<ParseObject>() {
 		            		    public void done(List<ParseObject> list, ParseException e) {
@@ -385,7 +420,7 @@ public class Friends extends Activity {
 		            		
 		            		ParseQuery<ParseObject> query1 = new ParseQuery("Friends");
 		            		query1.whereEqualTo("toUser", currentUser.getObjectId()+"");
-		            		query1.whereEqualTo("fromUser", friendsList.get(arg0).getObjectId()+"");
+		            		query1.whereEqualTo("fromUser", friendsFinList.get(arg0).getObjectId()+"");
 		            		query1.whereEqualTo("areFriends", true);
 		            		query1.findInBackground(new FindCallback<ParseObject>() {
 		            		    public void done(List<ParseObject> list, ParseException e) {
@@ -419,9 +454,37 @@ public class Friends extends Activity {
 		        
 		    });
 			
+			//Race logic
+			ImageButton race = (ImageButton)arg1.findViewById(R.id.RaceFlag);
+			race.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+				  final ParseObject challenge=new ParseObject("Challenges");
+		    	  challenge.put("fromUser", currentUser.getObjectId()+"");
+		    	  challenge.put("toUser", friendsFinList.get(arg0).getObjectId()+"");
+		    	  challenge.put("currentTurn", currentUser.getObjectId()+"");
+		    	  challenge.put("fromUserWPM", 0);
+		    	  challenge.put("toUserWPM", 0);
+		    	  challenge.put("fromUserTrials", 0);
+		    	  challenge.put("toUserTrials", 0);
+		    	  challenge.put("isOver", false);
+		    	  
+		    	  challenge.saveInBackground(
+	    			  new SaveCallback() {
+	    				  @Override
+						  public void done(ParseException arg0) {
+	    					  Intent movetoProgressScreen = new Intent(Friends.this, ChallengeProgress.class);
+	    					  movetoProgressScreen.putExtra("ChallengeId", challenge.getObjectId()+"");
+	    					  finish();
+	    					  startActivity(movetoProgressScreen);
+	    				  }
+	    			  });
+				}	
+			});
+			
 			findViewById(R.id.LoadingIcon).setVisibility(View.INVISIBLE);
-			wpm.setText(friendsList.get(arg0).getInt("AWPM")+"");
-			username.setText(friendsList.get(arg0).getUsername()+"");
+			wpm.setText(friendsFinList.get(arg0).getInt("AWPM")+"");
+			username.setText(friendsFinList.get(arg0).getUsername()+"");
 			
 			return arg1;
 			

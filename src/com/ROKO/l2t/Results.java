@@ -4,6 +4,8 @@ import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +58,8 @@ public class Results extends Activity {
 			NeedToPass.setText("You needed " +needWPM[level-1] +" WPM to pass");
 			WPMDisplay.setText(wpm+" WPM");
 			WordsDisplay.setText(words +" Words");
-			ImageResults.setImageResource(R.drawable.temp_monster);
+			Bitmap bmp = BitmapFactory.decodeByteArray(user.getBytes("avatar"), 0, user.getBytes("avatar").length);
+		    ImageResults.setImageBitmap(bmp);
 			Button next = (Button)findViewById(R.id.Next);
 			next.setText("Retry");
 		}

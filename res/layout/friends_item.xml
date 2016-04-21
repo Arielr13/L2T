@@ -65,6 +65,7 @@
       	    android:src="@drawable/flag"
       	    android:layout_gravity="center"
       	    android:layout_weight="0"
+      	    android:id="@+id/RaceFlag"
       	    />
       	<ImageButton 
       	    android:layout_width="50dp"

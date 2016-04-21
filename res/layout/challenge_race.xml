@@ -137,8 +137,7 @@
     	    android:layout_above="@id/ChallengePrompt"
     	    android:layout_alignParentLeft="true"
     	    android:layout_marginBottom="20dp"
-    	    android:scaleType="fitStart"
-    	    android:src="@drawable/temp_monster" />
+    	    android:scaleType="fitStart"/>
 
     	   
    

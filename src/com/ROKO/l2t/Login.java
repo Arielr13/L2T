@@ -5,6 +5,8 @@ import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.rokomobi.sdk.ROKOLogger;
+import com.rokomobi.sdk.analytics.Event;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -66,6 +68,7 @@ public class Login extends Activity {
 					  public void done(ParseUser user, ParseException e) {
 					    if (user != null) {
 					    	Intent home = new Intent(Login.this, Home.class);
+					    	ROKOLogger.addEvent(new Event("User Logged In w/o Facebook"));
 						    startActivity(home);
 					    } 
 					    else {
@@ -96,6 +99,7 @@ public class Login extends Activity {
 			    else {
 			    	Intent home = new Intent(Login.this, Home.class);
 				    startActivity(home);
+				    ROKOLogger.addEvent(new Event("User Logged In With Facebook"));
 				    finish();
 			    }
 			  }

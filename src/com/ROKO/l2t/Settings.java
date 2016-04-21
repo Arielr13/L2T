@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.parse.ParseUser;
+import com.rokomobi.sdk.ROKOLogger;
+import com.rokomobi.sdk.analytics.Event;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -29,5 +31,6 @@ public class Settings extends Activity {
 		ParseUser.logOut();
 		Intent login = new Intent(this , Login.class);
 		startActivity(login);
+		ROKOLogger.addEvent(new Event("User Logged Out"));
 	}
 }

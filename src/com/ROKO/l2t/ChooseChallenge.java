@@ -90,9 +90,10 @@ public class ChooseChallenge extends Activity {
 	    			  new SaveCallback() {
 	    				  @Override
 						  public void done(ParseException arg0) {
-	    					  Intent moveToFirstLevel = new Intent(ChooseChallenge.this, ChallengeRace.class);
-	    					  moveToFirstLevel.putExtra("ChallengeId", challenge.getObjectId()+"");
-	    					  startActivity(moveToFirstLevel);
+	    					  Intent movetoProgressScreen = new Intent(ChooseChallenge.this, ChallengeProgress.class);
+	    					  movetoProgressScreen.putExtra("ChallengeId", challenge.getObjectId()+"");
+	    					  finish();
+	    					  startActivity(movetoProgressScreen);
 	    				  }
 	    			  });
 		      }

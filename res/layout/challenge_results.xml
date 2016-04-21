@@ -69,8 +69,7 @@
     	    android:layout_height="40dp"
     	    android:layout_centerVertical="true"
     	    android:layout_alignParentLeft="true"
-    	    android:scaleType="fitStart"
-    	    android:src="@drawable/temp_monster" />
+    	    android:scaleType="fitStart" />
     	
     </RelativeLayout>
     
@@ -95,8 +94,7 @@
     	    android:layout_height="40dp"
     	    android:layout_centerVertical="true"
     	    android:layout_alignParentLeft="true"
-    	    android:scaleType="fitStart"
-    	    android:src="@drawable/temp_monster" />
+    	    android:scaleType="fitStart"/>
     
 	</RelativeLayout>
 	<Button 

@@ -76,29 +76,18 @@ public class ChallengeRace extends Activity {
 			prompt = (EditText)findViewById(R.id.ChallengePrompt);
 			input = (EditText)findViewById(R.id.ChallengeUserInput);
 			movingimage = (ImageView)findViewById(R.id.ChallengeMovingImage);
-			Random randomGenerator = new Random();
-			//level = randomGenerator.nextInt(16)+1;
-			level=16;
+			//level=16;
 			firsttime = true;
 			timer.setText("0:00");
 		
 			String sentences[] = {
-					"asdf jkl; asdf ffdd ffss ffaa asdf ;lkj jjkk jjll jj;; asdf jkl; "
-							+ "fjfj dfdf dsds klkl sasa l;l; fafa j;j; fsfs fdfd ffdd ss aa jkjk "
-							+ "jljl j;j; jjkk ll;; fjfj dkdk slsl a;a; asdf jkl; fjfj dkdk slsl "
-							+ "a;a; ffss ddaa jjll kk",
+							"The more that you read, the more things you will know. The more that you learn, the more places you'll go.",
 							
-							"frfr ftft jyjy juju frft frfr ftft jyjy juju jyju frfr ftft jyjy juju "
-							+ "frju frju frft frfr ftft jyjy juju fdfd frfr ftft jkjk jyjy juju jyft "
-							+ "jyft juju frfr frfd jujk jujk jujy jujy ftfr ftfr fdfr jyju jkju jujy jufr",
+							"Do not take life too seriously. You will never get out of it alive.",
 							
-							"jnjn jmjm k,k, l:l: jnnj jmmj k,,k ;::; jnfv jnjn fvfv jhjn fgfb jmjm "
-							+ "fvfv fbfb jmjm jnjn jnjm k,kl k,k, l;l: l:l; k,k, jmjn jnnj jmmj k,,k l::l"
-							+ " l;l: l:l; jnfb jmfv jnjm jujm jyjn jyjm jujn fvjm fbjn jhfg jyju frft",
+							"As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.",
 							
-							"swsw sxsx lolo l.l. swws sxxs swxs swxs swxs lo.l lol. lol. swxs sxws sxws "
-							+ "lol. lol. swsx slwx lso. lso. lo.l lol. sxws sos. sos. xolo. solo. was. "
-							+ "sdsx swsd sol. lko. kola kolo mela melo",
+							"Let us not seek the Republican answer or the Democratic answer, but the right answer. Let us not seek to fix the blame for the past. Let us accept our own responsibility for the future.",
 							
 							"A human being has so many skins inside, covering the depths of the heart. We know so many things, "
 							+ "but we don't know ourselves! Why, thirty or forty skins or hides, as thick and hard as an ox's or "
@@ -140,11 +129,10 @@ public class ChallengeRace extends Activity {
 							"My father... removed from Kentucky to... Indiana, in my eighth year... It was a wild region, with many bears and other "
 							+ "wild animals still in the woods. There I grew up... Of course when I came of age, I did not know much. Still somehow, "
 							+ "I could read, write, and cipher... but that was all.",
-							
-							"This level is for testing purposes only"
-							
-							
 			};
+			
+			Random randomGenerator = new Random();
+			level = randomGenerator.nextInt(sentences.length)+1;
 			
 			user = ParseUser.getCurrentUser();
 			tokens.setText((user.getInt("tokenCount"))+"");

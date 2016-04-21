@@ -37,11 +37,47 @@
 		        android:textColor="#fff"
 		        android:id="@+id/ChallengeNotifications"/>
 		        -->
+		        <LinearLayout
+			        android:layout_height="50dp"
+			        android:layout_width="match_parent"
+			        android:background="@color/background"
+			        android:orientation="horizontal"
+			        android:id="@+id/tabs"
+			        android:layout_below="@id/ChallengeHorizontalBar">
+			        <Button
+			            android:layout_height="match_parent"
+			        	android:layout_width="match_parent"
+			        	android:layout_weight="1"
+			        	android:text="Your Turn"
+			        	android:id="@+id/ChallengeListYourTurnButton"
+			        	android:onClick="yourTurn"
+			        	android:background="@color/blue"
+			        	/>
+			        <Button
+			            android:layout_height="match_parent"
+			        	android:layout_width="match_parent"
+			        	android:layout_weight="1"
+			        	android:text="Their Turn"
+			        	android:background="@null"
+			        	android:id="@+id/ChallengeListTheirTurnButton"
+			        	android:onClick="theirTurn"
+			        	/>
+			        <Button
+			            android:layout_height="match_parent"
+			        	android:layout_width="match_parent"
+			        	android:layout_weight="1"
+			        	android:text="History"
+			        	android:background="@null"
+			        	android:id="@+id/ChallengeListHistoryButton"
+			        	android:onClick="history"
+			        	/>
+            
+    </LinearLayout>
 		     <android.support.v4.view.ViewPager
 			     android:id="@+id/ViewPager"
 			     android:layout_width="match_parent"
 			     android:layout_height="match_parent"
-			     android:layout_below="@id/ChallengeHorizontalBar"
+			     android:layout_below="@id/tabs"
 			     android:focusable="true"><requestFocus/></android.support.v4.view.ViewPager>
 		     <Button 
 		         android:background="@color/blue"

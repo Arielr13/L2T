@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.ROKO.l2t.Study.Definition;
 import com.parse.ParseUser;
+import com.rokomobi.sdk.ROKOLogger;
+import com.rokomobi.sdk.analytics.Event;
 
 import android.app.Activity;
 import android.content.Context;
@@ -51,6 +53,7 @@ public class LevelSelect extends Activity {
 					Intent train = new Intent(LevelSelect.this, Race.class);
 					train.putExtra("level", level);
 					startActivity(train);
+					ROKOLogger.addEvent(new Event("Launched Level" +level));
 				}
 			}
 		});

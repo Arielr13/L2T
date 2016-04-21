@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -42,15 +43,23 @@ public class Challenge extends FragmentActivity {
 	ListView yourturn;
 	ListView theirturn;
 	ListView history;
+	ViewPager pager;
+	Button historyButton;
+	Button yourTurnButton;
+	Button theirTurnButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.challenge);
 		
-		ViewPager pager = (ViewPager) findViewById(R.id.ViewPager);
+		pager = (ViewPager) findViewById(R.id.ViewPager);
 		pager.setOffscreenPageLimit(3);
         pager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
+        
+        historyButton = (Button)findViewById(R.id.ChallengeListHistoryButton);
+        yourTurnButton = (Button)findViewById(R.id.ChallengeListYourTurnButton);
+        theirTurnButton = (Button)findViewById(R.id.ChallengeListTheirTurnButton);
 	}
 	
 	private class PagerAdapter extends FragmentPagerAdapter {
@@ -84,13 +93,14 @@ public class Challenge extends FragmentActivity {
 		ListView list;
 		List<YourTurnObject> yourTurnList;
 	    List<ParseObject> tempObjectList;
+	    Boolean started=false;
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	        View v = inflater.inflate(R.layout.challenge_listview, container, false);
 	        list = (ListView)v.findViewById(R.id.ChallengeList);
 	        loadingIcon = (ProgressBar)v.findViewById(R.id.ChallengeLoadingIcon);
-	        TextView title = (TextView)v.findViewById(R.id.ChallengeListTitle);
-	        title.setText("Your Turn");
+	        //Button yourTurnButton = (Button)findViewById(R.id.ChallengeListYourTurnButton);
+	        //yourTurnButton.setBackgroundColor(getResources().getColor(R.color.blue));
 	        //yourTurnList = new ArrayList<YourTurnObject>();
 	        //tempObjectList = new ArrayList<ParseObject>();
 	        getObjects();
@@ -102,10 +112,23 @@ public class Challenge extends FragmentActivity {
 					Intent progress = new Intent(Challenge.this, ChallengeProgress.class);
 					progress.putExtra("ChallengeId", object.challenge.getObjectId());
 					startActivity(progress);
+					finish();
 				}	
 	        });
 	        
+	        started=true;
 	        return v;
+	    }
+	    
+	    @Override
+	    public void setMenuVisibility(final boolean visible) {
+	        super.setMenuVisibility(visible);
+	        if (visible&&started) {
+	        	
+		        historyButton.setBackgroundColor(getResources().getColor(R.color.background));
+		        yourTurnButton.setBackgroundColor(getResources().getColor(R.color.blue));
+		        theirTurnButton.setBackgroundColor(getResources().getColor(R.color.background));
+	        }
 	    }
 	   
 	    public YourTurnFragment newInstance(){
@@ -209,13 +232,14 @@ public class Challenge extends FragmentActivity {
 	public class TheirTurnFragment extends Fragment {
 		ProgressBar loadingIcon;
 		ListView list;
+		Boolean started = false;
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	        View v = inflater.inflate(R.layout.challenge_listview, container, false);
 	        list = (ListView)v.findViewById(R.id.ChallengeList);
 	        loadingIcon = (ProgressBar)v.findViewById(R.id.ChallengeLoadingIcon);
-	        TextView title = (TextView)v.findViewById(R.id.ChallengeListTitle);
-	        title.setText("Their Turn");	
+	        //Button theirTurnButton = (Button)findViewById(R.id.ChallengeListTheirTurnButton);
+	        //theirTurnButton.setBackgroundColor(getResources().getColor(R.color.blue));
 	        theirTurnList = new ArrayList<TheirTurnObject>();
 	        tempObjectList = new ArrayList<ParseObject>();
 	        getObjects();
@@ -229,13 +253,24 @@ public class Challenge extends FragmentActivity {
 					Intent progress = new Intent(Challenge.this, ChallengeProgress.class);
 					progress.putExtra("ChallengeId", object.challenge.getObjectId());
 					startActivity(progress);
+					finish();
 				}	
 	        });
 	        
-	        
+	        started = true;
 	        return v;
 	    }
-
+	    
+	    @Override
+	    public void setMenuVisibility(final boolean visible) {
+	        super.setMenuVisibility(visible&&started);
+	        if (visible) {
+		        historyButton.setBackgroundColor(getResources().getColor(R.color.background));
+		        yourTurnButton.setBackgroundColor(getResources().getColor(R.color.background));
+		        theirTurnButton.setBackgroundColor(getResources().getColor(R.color.blue));
+	        }
+	    }
+	    
 	    public TheirTurnFragment newInstance(){
 	        TheirTurnFragment f = new TheirTurnFragment();
 	        return f;
@@ -357,13 +392,12 @@ public class Challenge extends FragmentActivity {
 	public class HistoryFragment extends Fragment {
 		ProgressBar loadingIcon;
 		ListView list;
+		Boolean started = false;
 	    @Override
 	    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	        View v = inflater.inflate(R.layout.challenge_listview, container, false);
 	        list = (ListView)v.findViewById(R.id.ChallengeList);
 	        loadingIcon = (ProgressBar)v.findViewById(R.id.ChallengeLoadingIcon);
-	        TextView title = (TextView)v.findViewById(R.id.ChallengeListTitle);
-	        title.setText("Challenge History");
 	        getObjects();
 	        
 	        list.setOnItemClickListener(new OnItemClickListener(){
@@ -373,10 +407,23 @@ public class Challenge extends FragmentActivity {
 					Intent progress = new Intent(Challenge.this, ChallengeResults.class);
 					progress.putExtra("ChallengeId", object.challenge.getObjectId());
 					startActivity(progress);
+					finish();
 				}	
 	        });
-	        
+	        started = true;
 	        return v;
+	    }
+	    @Override
+	    public void setMenuVisibility(final boolean visible) {
+	        super.setMenuVisibility(visible&&started);
+	        if (visible) {
+	        	Button historyButton = (Button)findViewById(R.id.ChallengeListHistoryButton);
+		        historyButton.setBackgroundColor(getResources().getColor(R.color.blue));
+		        Button yourTurnButton = (Button)findViewById(R.id.ChallengeListYourTurnButton);
+		        yourTurnButton.setBackgroundColor(getResources().getColor(R.color.background));
+		        Button theirTurnButton = (Button)findViewById(R.id.ChallengeListTheirTurnButton);
+		        theirTurnButton.setBackgroundColor(getResources().getColor(R.color.background));
+	        }
 	    }
 	    public HistoryFragment newInstance(){
 	        HistoryFragment f = new HistoryFragment();
@@ -500,6 +547,15 @@ public class Challenge extends FragmentActivity {
 	
 	public void newChallenge(View v){
 		startActivity(new Intent(Challenge.this, ChooseChallenge.class));
+		finish();
 	}
-	
+	public void yourTurn(View v){
+		pager.setCurrentItem(0);
+	}
+	public void theirTurn(View v){
+		pager.setCurrentItem(1);
+	}
+	public void history(View v){
+		pager.setCurrentItem(2);
+	}
 }

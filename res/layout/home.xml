@@ -20,7 +20,7 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="15dp"
 	        android:layout_marginBottom="15dp"
-	        android:src="@drawable/logo"
+	        android:src="@drawable/app_icon"
 	        android:scaleType="fitCenter"
 	        android:paddingTop="3dp"/>
 	    <TextView
@@ -57,20 +57,22 @@
 	  	    android:textSize="30dp"
 	  	    android:gravity="center"
 	  	    android:layout_marginTop="15dp"
-	        android:layout_marginBottom="15dp"
+	        android:layout_marginBottom="3dp"
 	        android:textStyle="bold"
 	        android:onClick='goUser' />
+
 		<ImageView
-	  	    android:id="@+id/Avatar"
-	  	    android:layout_width="match_parent"
-	  	    android:layout_height="match_parent"
-	  	    android:layout_below="@+id/UsernameField"
-	  	    android:layout_centerHorizontal="true"
-	  	    android:adjustViewBounds="true"
-	  	    android:scaleType="fitCenter"
-	  	    android:src="@drawable/temp_monster"
-	  	    android:onClick='goUser'
-	  	 />
+		    android:id="@+id/Avatar"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_alignParentBottom="true"
+		    android:layout_below="@+id/UsernameField"
+		    android:layout_centerHorizontal="true"
+		    android:adjustViewBounds="true"
+		    android:gravity="center"
+		    android:onClick="goUser"
+		    android:scaleType="fitCenter" />
+
 	</RelativeLayout>
 	<LinearLayout
   	    android:layout_width="match_parent"
@@ -80,7 +82,7 @@
   	    android:layout_marginBottom = "10dp"
   	    android:layout_marginTop = "10dp"
   	    android:layout_centerHorizontal="true"
-		android:layout_weight="1"
+		android:layout_weight="1.2"
 		android:orientation="vertical">
 			<LinearLayout
 		  	    android:layout_width="match_parent"

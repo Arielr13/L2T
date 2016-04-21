@@ -20,5 +20,8 @@
     <string name="title_activity_challenge_progress">ChallengeProgress</string>
     <string name="title_activity_challenge_race">ChallengeRace</string>
     <string name="title_activity_challenge_results">ChallengeResults</string>
+    <string name="title_activity_user">User</string>
+    <string name="action_settings">Settings</string>
+    <string name="gcmSender">386620626732</string>
 
 </resources>
